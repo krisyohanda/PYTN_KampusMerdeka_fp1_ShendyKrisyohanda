@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="img/x-icon" />
+    <link rel="stylesheet" href="{{url_for('static',filename='vendor/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    <link href="{{  url_for('static', filename='vendor/aos/aos.css') }}" rel="stylesheet">
+    <link href="{{  url_for('static', filename='vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+    <link href="{{  url_for('static', filename='vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
+    <link href="{{  url_for('static', filename='vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+    <link href="{{  url_for('static', filename='vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+    <link href="{{  url_for('static', filename='vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+    <title>Final Project-1 Linear Regression</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css"
+        integrity="sha384-/frq1SRXYH/bSyou/HUp/hib7RVN1TawQYja658FEOodR/FQBKVqT9Ol+Oz3Olq5" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/solid.css"
+        integrity="sha384-DhmF1FmzR9+RBLmbsAts3Sp+i6cZMWQwNTRsew7pO/e4gvzqmzcpAzhDIwllPonQ" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/fontawesome.css"
+        integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM" crossorigin="anonymous" />
+</head>
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="fixed-top">
+        <div class="container  d-flex align-items-center">
+            <h1 class="me-auto logo ">Price Prediction Transportation Online</h1>
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                    <li><a class="nav-link scrollto" href="#about">Explanation</a></li>
+                    <li><a class="nav-link scrollto" href="#portfolio">Chart</a></li>
+                    <li><a class="nav-link scrollto" href="#team">Team</a></li>
+                    <li><a class="nav-link scrollto" href="#prediction">Prediction Section</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
+                    data-aos="fade-up">
+                    <h1>Final Project-1 Hacktiv8 Study Independent</h1>
+                    <h2>This FP represent about price prediction transportation online between Uber and Lyft</h2>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in">
+                    <img src="{{  url_for('static', filename='img/hero_img.jpg') }}" class="img-fluid animated" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Hero -->
+    <main id="main">
+
+        <!-- About Section -->
+        <section id="about" class="about section-bg">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Explanation
+                        <br>
+                        <h6 class="mt-3 text-black-50">
+                            In this section, there is a description of the
+                            abstract and also a
+                            description
+                            of the data.
+                        </h6>
+                    </h2>
+                </div>
+                <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="definition-tab" data-toggle="tab" href="#definition" role="tab"
+                            aria-controls="home" aria-selected="true">Definition</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="data-tab" data-toggle="tab" href="#data" role="tab"
+                            aria-controls="profile" aria-selected="false">Data</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="definition" role="tabpanel"
+                        aria-labelledby="definition-tab">
+                        <div class="mt-4">
+                            <p class="text-center">
+                                Transportasi online merupakan transportasi yang berbasis suatu aplikasi 
+                                tertentu dimana pelanggan memesan sarana transportasi melalui 
+                                sistem aplikasi di dalam smartphone. Aplikasi ride-hailing Uber dan Lyft,
+                                merupakan dua perusahaan layanan transportasi klasik.
+                            </p>
+                            <p class="text-center">
+                                Tidak bisa dipungkiri, masyarakat di kota-kota besar kini sedang menggandrungi 
+                                transportasi online dengan menggunakan aplikasi smartphone.
+                                Cukup dengan mengunduh aplikasi di smartphone, lalu melakukan registrasi pada aplikasi 
+                                tersebut, kemudian mencantumkan lokasi penjemputan dan pengantaran, 
+                                maka dalam hitungan menit pelaku jasa transportasi siap mengantarkan penumpang ke tempat tujuan.
+                            </p>
+                            <p class="text-center">
+                                Untuk membantu pengguna aplikasi ride-hailing dalam memilih transportasi online 
+                                dengan harga murah berdasarkan 8 macam pertimbangan yang dapat dilihat di panel data, 
+                                maka akan dibuat sebuah website yang dapat memprediksi harga 
+                                Uber dan Lyft menggunakan algoritma Decision Tree dan Linear Regression.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="data" role="tabpanel" aria-labelledby="data-tab">
+                        <div class="mt-4">
+                            <p>Dataset yang digunakan yaitu <a href="https://www.kaggle.com/datasets/brllrb/uber-and-lyft-dataset-boston-ma"
+                                    style="text-decoration: none;" target="_blank"><b style="font-style: italic">Uber and Lyft Dataset Boston, MA</b></a> :
+                                <br><br>
+                                Data ini memiliki 57 atribut secara keseluruhan, tetapi yang paling relevan ada 10 atribut dari semuanya. Prediksi tarif harga transportasi online. berikut merupakan deskripsi data:
+                            </p>
+                            <table class="table table-white table-bordered border-4 border-white">
+                                <thead>
+                                    <tr style="text-align: center">
+                                        <th style="text-align: center" scope="col">No</th>
+                                        <th style="text-align: center" scope="col">Nama Kolom</th>
+                                        <th style="text-align: center" scope="col">Keterangan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 1 -->
+                                    <tr>
+                                        <th style="text-align: center" scope="row">1</th>
+                                        <td>transport_name</td>
+                                        <td>merek transport online yang digunakan Uber atau Lyft</td>
+                                    </tr>
+                                    <!-- 2 -->
+                                    <tr>
+                                        <th style="text-align: center" scope="row">2</th>
+                                        <td>kind</td>
+                                        <td>jenis kendaraan
+                                        </td>
+                                    </tr>
+                                    <!-- 3 -->
+                                    <tr>
+                                        <th style="text-align: center" scope="row">3</th>
+                                        <td>start</td>
+                                        <td>titik penjemputan
+                                        </td>
+                                    </tr>
+                                    <!-- 4 -->
+                                    <tr>
+                                        <th style="text-align: center" scope="row">4</th>
+                                        <td>finish</td>
+                                        <td>titik pendaratan
+                                        </td>
+                                    </tr>
+                                    <!-- 5 -->
+                                    <tr>
+                                        <th style="text-align: center" scope="row">5</th>
+                                        <td>visibility</td>
+                                        <td>jarak penglihatan
+                                            </td>
+                                    </tr>
+                                    <!-- 6 -->
+                                    <tr>
+                                        <th style="text-align: center" scope="row">6</th>
+                                        <td>weather</td>
+                                        <td>kondisi cuaca</td>
+                                    </tr>
+                                    <!-- 7 -->
+                                    <tr>
+                                        <th style="text-align: center" scope="row">7</th>
+                                        <td>distance</td>
+                                        <td>jarak yang ditempuh dalam kilometer
+                                        </td>
+                                    </tr>
+                                    <!-- 8 -->
+                                    <tr>
+                                        <th style="text-align: center" scope="row">8</th>
+                                        <td>surge_multiplier</td>
+                                        <td>kenaikan harga penawaran (apabila banyak permintaan terhadap jasa transportasi online)
+                                        </td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+        </section>
+        <!-- End About Section -->
+
+        <!-- Start Chart Section -->
+        <section id="portfolio" class="portfolio">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Chart and Diagram Data Analysis</h2>
+                    <p>These chart represent some analysis of uber and lyft dataset using various of type diagram</p>
+                </div>
+
+                <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up">
+                    <li data-filter="*" class="filter-active">All Graphic Plot</li>
+                    <li data-filter=".filter-eda">EDA Diagrams</li>
+                    <li data-filter=".filter-cm">Confusion Matrix</li>
+                </ul>
+
+                <div class="row portfolio-container" data-aos="fade-up">
+                    <!-- Chart Section 1 -->
+                    <div>
+                        <!-- d-1 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-eda">
+                            <div class="portfolio-img">
+                                <img src="{{ url_for('static', filename='img/diagram/scatter_diagram_dt.png') }}"
+                                    class="img-fluid" alt="">
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Scatter Plot</h4>
+                                <p>Prediction vs Test with Decision Tree</p>
+                            </div>
+                        </div>
+                        <!-- d-2 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-eda">
+                            <div class="portfolio-img">
+                                <img src="{{ url_for('static', filename='img/diagram/weather_barh.png') }}"
+                                    class="img-fluid" alt="">
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Bar Chart</h4>
+                                <p>The Comparance disease between age and sex</p>
+                            </div>
+                        </div>
+                        <!-- d-3 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-eda">
+                            <div class="portfolio-img">
+                                <img src="{{ url_for('static', filename='img/diagram/corr_diagram.png') }}"
+                                    class="img-fluid" alt="">
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Correlation Diagram</h4>
+                                <p>The correlation between each features on dataset</p>
+                            </div>
+                        </div>
+                        <!-- d-4 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-eda">
+                            <div class="portfolio-img">
+                                <img src="{{ url_for('static', filename='img/diagram/weather_pie.png') }}"
+                                class="img-fluid" alt="">
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Pie Chart</h4>
+                                <p>Percentage of online transportation bookings based on weather</p>
+                            </div>
+                        </div>
+                        <!-- d-5 -->
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-eda">
+                            <div class="portfolio-img">
+                                <img src="{{ url_for('static', filename='img/diagram/scatter_diagram_lr.png') }}"
+                                    class="img-fluid" alt="">
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Scatter Plot</h4>
+                                <p>Prediction vs Test with Linear Regression</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Chart Section 1 -->
+
+                    <!-- Chart Section 2 -->
+                    <div>
+                        <!-- d-1 -->
+                        <!-- <div class="col-lg-4 col-md-6 portfolio-item filter-cm">
+                            <div class="portfolio-img"><img
+                                    src="{{ url_for('static', filename='img/diagram/dtm.png') }}"
+                                    class="img-fluid" alt="">
+                                </div>
+                                <div class="portfolio-info">
+                                <h4>Decision Tree CM</h4>
+                                <p>Visualize accuracy between prediction and real data using Decision Tree Model</p>
+                            </div>
+                        </div> -->
+                    </div>
+                    <!-- End Chart Section 2 -->
+                </div>
+            </div>
+        </section>
+        <!-- End Chart Section -->
+
+        <!-- Start Team Section -->
+        <section id="team" class="team section-bg">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>Team</h2>
+                    <p>This group contains 3 certified independent study participants, namely:</p>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-6">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in">
+                            <div class="pic"><img src="{{ url_for('static', filename='img/avatar_2.jpg') }}"
+                                    class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Muhammad Ismail</h4>
+                                <span>Studi Independen</span>
+                                <p>PYTN-KS08-011</p>
+                                <div class="social">
+                                    <a href="https://github.com/mail2418" target="_blank"><i
+                                            class="fa-brands fa-github"></i></a>
+                                    <a href="https://www.linkedin.com/in/muhammad-2418-ismail/" target="_blank"><i
+                                            class="fa-brands fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="300">
+                            <div class="pic"><img src="{{ url_for('static', filename='img/avatar_1.jpg') }}"
+                                    class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Syahrani Nabilla Kharisma H</h4>
+                                <span>Studi Independen</span>
+                                <p>PYTN-KS08-013</p>
+                                <div class="social">
+                                    <a href="#"><i class="fa-brands fa-github"></i></a>
+                                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4">
+                        <div class="member d-flex align-items-start" data-aos="zoom-in" data-aos-delay="400">
+                            <div class="pic"><img src="{{ url_for('static', filename='img/avatar_3.jpg') }}"
+                                    class="img-fluid" alt=""></div>
+                            <div class="member-info">
+                                <h4>Shendy Krisyohanda</h4>
+                                <span>Studi Independen</span>
+                                <p>PYTN-KS08-021</p>
+                                <div class="social">
+                                    <a href="https://github.com/krisyohanda"><i class="fa-brands fa-github"></i></a>
+                                    <a href="https://www.linkedin.com/in/shendy-krisyohanda/"><i class="fa-brands fa-linkedin"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+        <!-- End Team Section -->
+
+        <!-- Start Prediction Section -->
+        <section id="prediction" class="contact">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Prediction with Decision Tree</h2>
+                    <p>Section to price prediction transportation online with decision tree according to user's input</p>
+                </div>
+                <div class="mt-4 text-center">
+                    <form action="{{ url_for('predict1')}}" method="post" class="php-email-form">
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="transport_name">Transport Name</label>
+                                <select class="form-control" id="transport_name" name="transport_name"
+                                    required="required">
+                                    <option>-- Choose a Transport Name --</option>
+                                    <option value="0">Lyft</option>
+                                    <option value="1">Uber</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="kind">Service Type</label>
+                                <select class="form-control" id="kind" name="kind" required="required">
+                                    <option>-- Choose a Service Type --</option>
+                                    <option value="0">Uber XL</option>
+                                    <option value="1">Uber WAV</option>
+                                    <option value="2">Uber Black SUV</option>
+                                    <option value="3">Uber Black</option>
+                                    <option value="4">Uber X</option>
+                                    <option value="5">Uber Pool</option>
+                                    <option value="6">Uber Lux</option>
+                                    <option value="7">Lyft Taxi</option>
+                                    <option value="8">Lyft Black XL</option>
+                                    <option value="9">Lyft XL</option>
+                                    <option value="10">Lyft Black</option>
+                                    <option value="11">Lyft Shared</option>
+                            </div>
+                            <div class="form-group">
+                                <label for="start">Pick-up Point</label>
+                                <select class="form-control" id="start" name="start" required="required">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="start">Pick-up Point</label>
+                                <select class="form-control" id="start" name="start" required="required">
+                                    <option>-- Choose a Pick-up Point --</option>
+                                    <option value="0">Financial District</option>
+                                    <option value="1">Back Bay</option>
+                                    <option value="2">Theatre District</option>
+                                    <option value="3">Boston University</option>
+                                    <option value="4">North End</option>
+                                    <option value="5">Fenway</option>
+                                    <option value="6">Northeastern University</option>
+                                    <option value="7">South Station</option>
+                                    <option value="8">Haymarket Square</option>
+                                    <option value="9">West End</option>
+                                    <option value="10">Beacon Hill</option>
+                                    <option value="11">North Station</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="finish">Drop Point</label>
+                                <select class="form-control" id="finish" name="finish" required="required">
+                                    <option>-- Choose a Drop Point --</option>
+                                    <option value="0">Financial District</option>
+                                    <option value="1">Back Bay</option>
+                                    <option value="2">Theatre District</option>
+                                    <option value="3">Boston University</option>
+                                    <option value="4">North End</option>
+                                    <option value="5">Fenway</option>
+                                    <option value="6">Northeastern University</option>
+                                    <option value="7">South Station</option>
+                                    <option value="8">Haymarket Square</option>
+                                    <option value="9">West End</option>
+                                    <option value="10">Beacon Hill</option>
+                                    <option value="11">North Station</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="visibility">Visibilty</label>
+                                <input type="number" name="visibility" class="form-control" id="visibility"
+                                    placeholder="Input Visibility Range (0 - 226)" min="0" max="226"
+                                    required="required">
+                            </div>
+                            <div class="form-group">
+                                <label for="weather">Weather</label>
+                                <select class="form-control" id="weather" name="weather" required="required">
+                                    <option>-- Choose a Weather Condition --</option>
+                                    <option value="0">Overcast</option>
+                                    <option value="1">Mostly Cloudy</option>
+                                    <option value="2">Party Cloudy</option>
+                                    <option value="3">Clear</option>
+                                    <option value="4">Light Rain</option>
+                                    <option value="5">Rain</option>
+                                    <option value="6">Possible Drizzle</option>
+                                    <option value="7">Foggy</option>
+                                    <option value="8">Drizzle</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="distance">Distance</label>
+                                <input type="number" name="distance" class="form-control" id="distance"
+                                    placeholder="Input Distance Range (0 - 548)" min="0" max="548"
+                                    required="required">
+                            </div>
+                            <div class="form-group">
+                                <label for="surge_multiplier">Surge Multiplier Pricing</label>
+                                <select class="form-control" id="surge_multiplier" name="surge_multiplier"
+                                    required="required">
+                                    <option>-- Choose a Surge Multiplier Pricing --</option>
+                                    <option value="0">$1.00</option>
+                                    <option value="1">$1.25</option>
+                                    <option value="2">$1.50</option>
+                                    <option value="3">$1.75</option>
+                                    <option value="4">$2.00</option>
+                                    <option value="5">$2.50</option>
+                                    <option value="6">$3.00</option>
+                                </select>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit">Predict</button>
+                            </div>
+                            <p class="message">{{prediction_text_dt}}</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Start Prediction Section -->
+        <section id="prediction" class="contact">
+            <div class="container" data-aos="fade-up">
+                <div class="section-title">
+                    <h2>Prediction with Linear Regression</h2>
+                    <p>Section to price prediction transportation online with linear regression according to user's input</p>
+                </div>
+                <div class="mt-4 text-center">
+                    <form action="{{ url_for('predict2')}}" method="post" class="php-email-form">
+                        <div class="row">
+                            <div class="form-group">
+                                <label for="transport_name">Transport Name</label>
+                                <select class="form-control" id="transport_name" name="transport_name"
+                                    required="required">
+                                    <option>-- Choose a Transport Name --</option>
+                                    <option value="0">Lyft</option>
+                                    <option value="1">Uber</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="kind">Service Type</label>
+                                <select class="form-control" id="kind" name="kind" required="required">
+                                    <option>-- Choose a Service Type --</option>
+                                    <option value="0">Uber XL</option>
+                                    <option value="1">Uber WAV</option>
+                                    <option value="2">Uber Black SUV</option>
+                                    <option value="3">Uber Black</option>
+                                    <option value="4">Uber X</option>
+                                    <option value="5">Uber Pool</option>
+                                    <option value="6">Uber Lux</option>
+                                    <option value="7">Lyft Taxi</option>
+                                    <option value="8">Lyft Black XL</option>
+                                    <option value="9">Lyft XL</option>
+                                    <option value="10">Lyft Black</option>
+                                    <option value="11">Lyft Shared</option>
+                            </div>
+                            <div class="form-group">
+                                <label for="start">Pick-up Point</label>
+                                <select class="form-control" id="start" name="start" required="required">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="start">Pick-up Point</label>
+                                <select class="form-control" id="start" name="start" required="required">
+                                    <option>-- Choose a Pick-up Point --</option>
+                                    <option value="0">Financial District</option>
+                                    <option value="1">Back Bay</option>
+                                    <option value="2">Theatre District</option>
+                                    <option value="3">Boston University</option>
+                                    <option value="4">North End</option>
+                                    <option value="5">Fenway</option>
+                                    <option value="6">Northeastern University</option>
+                                    <option value="7">South Station</option>
+                                    <option value="8">Haymarket Square</option>
+                                    <option value="9">West End</option>
+                                    <option value="10">Beacon Hill</option>
+                                    <option value="11">North Station</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="finish">Drop Point</label>
+                                <select class="form-control" id="finish" name="finish" required="required">
+                                    <option>-- Choose a Drop Point --</option>
+                                    <option value="0">Financial District</option>
+                                    <option value="1">Back Bay</option>
+                                    <option value="2">Theatre District</option>
+                                    <option value="3">Boston University</option>
+                                    <option value="4">North End</option>
+                                    <option value="5">Fenway</option>
+                                    <option value="6">Northeastern University</option>
+                                    <option value="7">South Station</option>
+                                    <option value="8">Haymarket Square</option>
+                                    <option value="9">West End</option>
+                                    <option value="10">Beacon Hill</option>
+                                    <option value="11">North Station</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="visibility">Visibilty</label>
+                                <input type="number" name="visibility" class="form-control" id="visibility"
+                                    placeholder="Input Visibility Range (0 - 226)" min="0" max="226"
+                                    required="required">
+                            </div>
+                            <div class="form-group">
+                                <label for="weather">Weather</label>
+                                <select class="form-control" id="weather" name="weather" required="required">
+                                    <option>-- Choose a Weather Condition --</option>
+                                    <option value="0">Overcast</option>
+                                    <option value="1">Mostly Cloudy</option>
+                                    <option value="2">Party Cloudy</option>
+                                    <option value="3">Clear</option>
+                                    <option value="4">Light Rain</option>
+                                    <option value="5">Rain</option>
+                                    <option value="6">Possible Drizzle</option>
+                                    <option value="7">Foggy</option>
+                                    <option value="8">Drizzle</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="distance">Distance</label>
+                                <input type="number" name="distance" class="form-control" id="distance"
+                                    placeholder="Input Distance Range (0 - 548)" min="0" max="548"
+                                    required="required">
+                            </div>
+                            <div class="form-group">
+                                <label for="surge_multiplier">Surge Multiplier Pricing</label>
+                                <select class="form-control" id="surge_multiplier" name="surge_multiplier"
+                                    required="required">
+                                    <option>-- Choose a Surge Multiplier Pricing --</option>
+                                    <option value="0">$1.00</option>
+                                    <option value="1">$1.25</option>
+                                    <option value="2">$1.50</option>
+                                    <option value="3">$1.75</option>
+                                    <option value="4">$2.00</option>
+                                    <option value="5">$2.50</option>
+                                    <option value="6">$3.00</option>
+                                </select>
+                            </div>
+                            <div class="text-center">
+                                <button type="submit">Predict</button>
+                            </div>
+                            <p class="message">{{prediction_text_lr}}</p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- End Prediction Section -->
+    </main>
+    <!-- End Main -->
+
+    <!-- Start Footer -->
+    <footer id="footer">
+        <div class="container footer-bottom clearfix">
+            <div class="copyright">
+                &copy; Copyright <strong><span>Kelompok 5 PYTN-KS08</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/arsha-free-bootstrap-html-template-corporate/ -->
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer -->
+    <script src="{{ url_for('static', filename='vendor/glightbox/js/glightbox.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/swiper/swiper-bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/aos/aos.js') }}"></script>
+    <script src="{{ url_for('static', filename='vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/noframework.waypoints.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/isotope.pkgd.min.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.3/dist/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.1.3/dist/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+    </script>
+</body>
+
+</html>
